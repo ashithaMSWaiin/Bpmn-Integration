@@ -1,0 +1,47 @@
+#sidebar {
+    background-color: #fff !important;
+}
+
+.show_one {
+    display: block;
+    transition: all 0.5s;
+}
+
+.show_two {
+    display: block;
+    transition: all 0.5s;
+}
+
+/* Ensure the submenu is positioned relative to its parent */
+#sidebar ul ul {
+    position: relative;
+    left: 0;
+    padding-left: 20px; /* Adjust this value to control the indentation */
+}
+
+/* Style for the main menu items */
+#sidebar ul > li {
+    list-style: none;
+    padding: 10px 20px;
+}
+
+/* Style for the submenu items */
+#sidebar ul ul > li {
+    list-style: none;
+    padding: 5px 20px;
+    background-color: #f8f9fa; /* Different background for submenu */
+}
+
+/* Style for the links */
+#sidebar a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for active menu items */
+#sidebar .active > a {
+    font-weight: bold;
+    color: #007bff;
+}

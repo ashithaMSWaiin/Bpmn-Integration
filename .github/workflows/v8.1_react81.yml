@@ -1,0 +1,65 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: v8.1-Raaghu-Staging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: none
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 90
+    defaults: 
+      run:
+        shell: pwsh
+        working-directory: .
+
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          
+      - name: npm install, build
+        run: |
+          npm run install-all
+          npm run build
+          cp raaghu-mfe/web.config raaghu-mfe/rds_pages/host/dist
+          cp raaghu-mfe/rds_pages/host/public/favicon.ico raaghu-mfe/rds_pages/host/dist
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: raaghu-mfe/rds_pages/host/dist
+
+  deploy:
+    runs-on: ubuntu-24.04
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+      
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'react81ui'
+          slot-name: 'Production'
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_APP_V81 }}

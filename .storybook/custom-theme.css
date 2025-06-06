@@ -1,0 +1,74 @@
+#storybook-explorer-menu .sidebar-item[data-selected="true"] {
+    /* background: #7e2eef14 !important;
+    color: #ac31e1; */
+}
+#introduction--page.sidebar-item,
+#charts.sidebar-item,
+#elements.sidebar-item,
+#components.sidebar-item,
+#icons.sidebar-item,
+#pages.sidebar-item,
+#map.sidebar-item,
+#application-shell.sidebar-item,
+#layouts.sidebar-item,
+#application-shells.sidebar-item {
+    font-weight: 600;
+}
+
+#introduction--page.sidebar-item {
+    padding-left: 0px !important;
+}
+.sto-1tzk3u {
+    border-top: 0px !important;
+}
+
+.sto-1onnxik {
+    box-shadow: none !important;
+}
+
+.sto-1qwztpk {
+    position: relative;
+    margin-left: 0px !important;
+    margin-right: -0px !important;
+}
+
+.sidebar-container .sto-79elbk .sidebar-item {
+    padding-left: 30sspx !important;
+}
+
+.sb-show-main.sb-main-centered #root {
+    width: 100% !important;
+}
+
+.sto-svjevy {
+    padding: 0px !important;
+}
+
+.sb-show-main ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+/* elements in storybook */
+.sb-show-main {
+    padding: 5px !important;
+}
+.css-1rb1jn6 {
+    width: 142px !important;
+}
+/* .css-194spiq {
+    padding: 15px !important;
+} */
+
+.css-t68aeq{
+    padding: 0px !important;
+}
+
+.css-14774g3{
+    --scrollbar-size: 6px !important;
+}
+
+.css-zqpgva[data-orientation="vertical"] {
+    padding-right: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}

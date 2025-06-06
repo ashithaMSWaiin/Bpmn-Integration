@@ -1,0 +1,824 @@
+name: v7.2-Raaghu-Staging-Updated
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: none       
+
+jobs:
+  build_pages_1:
+    name: Build Pages 1
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 30
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          
+      - name: Install dependencies
+        run: npm run install-all
+        
+      - name: Build Host
+        run: npm run build-host
+        
+      - name: Build
+        run: npx lerna run build --scope=api-scope --scope=applications --scope=audit-logs --scope=authority-delegation --scope=blogger --scope=blog-post --scope=tenant --scope=text-template --scope=url-forwarding --scope=users
+
+      - name: copy files into host
+        run: |
+          cp raaghu-mfe/web.config raaghu-mfe/rds_pages/host/dist
+          cp raaghu-mfe/rds_pages/host/public/favicon.ico raaghu-mfe/rds_pages/host/dist
+        
+      - name: Upload Artifact - host
+        uses: actions/upload-artifact@v4
+        with:
+          name: host
+          path: raaghu-mfe/rds_pages/host/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - api-scope
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-api-scope
+          path: raaghu-mfe/rds_pages/rds-page-api-scope/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - applications
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-applications
+          path: raaghu-mfe/rds_pages/rds-page-applications/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - audit-logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-audit-logs
+          path: raaghu-mfe/rds_pages/rds-page-audit-logs/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - authority-delegation
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-authority-delegation
+          path: raaghu-mfe/rds_pages/rds-page-authority-delegation/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - blogger
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-blogger
+          path: raaghu-mfe/rds_pages/rds-page-blogger/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - blog-post
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-blog-post
+          path: raaghu-mfe/rds_pages/rds-page-blog-post/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - tenant
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-tenant
+          path: raaghu-mfe/rds_pages/rds-page-tenant/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - text-template
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-text-template
+          path: raaghu-mfe/rds_pages/rds-page-text-template/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - url-forwarding
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-url-forwarding
+          path: raaghu-mfe/rds_pages/rds-page-url-forwarding/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - users
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-users
+          path: raaghu-mfe/rds_pages/rds-page-users/dist
+          if-no-files-found: error
+
+  build_pages_2:
+    name: Build Pages 2
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 30
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          
+      - name: Install dependencies
+        run: npm run install-all
+        
+      - name: Build
+        run: npx lerna run build --scope=blogs --scope=change-password --scope=chart --scope=chats --scope=claim-types --scope=client --scope=comments --scope=security-logs --scope=settings --scope=tags
+        
+      - name: Upload Artifact - blogs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-blogs
+          path: raaghu-mfe/rds_pages/rds-page-blogs/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - change-password
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-change-password
+          path: raaghu-mfe/rds_pages/rds-page-change-password/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - chart
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-chart
+          path: raaghu-mfe/rds_pages/rds-page-chart/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - chats
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-chats
+          path: raaghu-mfe/rds_pages/rds-page-chats/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - claim-types
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-claim-types
+          path: raaghu-mfe/rds_pages/rds-page-claim-types/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - client
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-client
+          path: raaghu-mfe/rds_pages/rds-page-client/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - comments
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-comments
+          path: raaghu-mfe/rds_pages/rds-page-comments/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - security-logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-security-logs
+          path: raaghu-mfe/rds_pages/rds-page-security-logs/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - settings
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-settings
+          path: raaghu-mfe/rds_pages/rds-page-settings/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - tags
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-tags
+          path: raaghu-mfe/rds_pages/rds-page-tags/dist
+          if-no-files-found: error
+
+  build_pages_3:
+    name: Build Pages 3
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 30
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          
+      - name: Install dependencies
+        run: npm run install-all
+        
+      - name: Build
+        run: npx lerna run build --scope=components --scope=dashboard --scope=edition --scope=elements --scope=file-management --scope=forgot-password --scope=forms --scope=forms-preview --scope=forms-view --scope=forms-response
+        
+      - name: Upload Artifact - components
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-components
+          path: raaghu-mfe/rds_pages/rds-page-components/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-dashboard
+          path: raaghu-mfe/rds_pages/rds-page-dashboard/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - edition
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-edition
+          path: raaghu-mfe/rds_pages/rds-page-edition/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - elements
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-elements
+          path: raaghu-mfe/rds_pages/rds-page-elements/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - file-management
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-file-management
+          path: raaghu-mfe/rds_pages/rds-page-file-management/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - forgot-password
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-forgot-password
+          path: raaghu-mfe/rds_pages/rds-page-forgot-password/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - forms
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-forms
+          path: raaghu-mfe/rds_pages/rds-page-forms/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - forms-preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-forms-preview
+          path: raaghu-mfe/rds_pages/rds-page-forms-preview/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - forms-view
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-forms-view
+          path: raaghu-mfe/rds_pages/rds-page-forms-view/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - forms-response
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-forms-response
+          path: raaghu-mfe/rds_pages/rds-page-forms-response/dist
+          if-no-files-found: error
+
+  build_pages_4:
+    name: Build Pages 4
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 30
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          
+      - name: Install dependencies
+        run: npm run install-all
+        
+      - name: Build
+        run: npx lerna run build --scope=global-resources --scope=home --scope=icon-list --scope=language --scope=language-text --scope=linked-accounts --scope=login --scope=maintainance --scope=menus --scope=my-account
+        
+      - name: Upload Artifact - global-resources
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-global-resources
+          path: raaghu-mfe/rds_pages/rds-page-global-resources/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - home
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-home
+          path: raaghu-mfe/rds_pages/rds-page-home/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - icon-list
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-icon-list
+          path: raaghu-mfe/rds_pages/rds-page-icon-list/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - language
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-language
+          path: raaghu-mfe/rds_pages/rds-page-language/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - language-text
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-language-text
+          path: raaghu-mfe/rds_pages/rds-page-language-text/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - linked-accounts
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-linked-accounts
+          path: raaghu-mfe/rds_pages/rds-page-linked-accounts/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - login
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-login
+          path: raaghu-mfe/rds_pages/rds-page-login/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - maintainance
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-maintainance
+          path: raaghu-mfe/rds_pages/rds-page-maintainance/dist
+          if-no-files-found: error
+
+      #- name: Upload Artifact - under-maintainance
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: rds-page-under-maintainance
+      #    path: raaghu-mfe/rds_pages/rds-page-under-maintainance/dist
+      #    if-no-files-found: error
+          
+      - name: Upload Artifact - menus
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-menus
+          path: raaghu-mfe/rds_pages/rds-page-menus/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - my-account
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-my-account
+          path: raaghu-mfe/rds_pages/rds-page-my-account/dist
+          if-no-files-found: error
+
+  build_pages_5:
+    name: Build Pages 5
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    timeout-minutes: 30
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          
+      - name: Install dependencies
+        run: npm run install-all
+        
+      - name: Build
+        run: npx lerna run build --scope=news-letters --scope=organization-units --scope=page-not-found --scope=pages --scope=payment-plans --scope=payment-requests --scope=personal-data --scope=polls --scope=register --scope=roles
+        
+      - name: Upload Artifact - news-letters
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-news-letters
+          path: raaghu-mfe/rds_pages/rds-page-news-letters/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - organization-units
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-organization-units
+          path: raaghu-mfe/rds_pages/rds-page-organization-units/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - page-not-found
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-page-not-found
+          path: raaghu-mfe/rds_pages/rds-page-page-not-found/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-pages
+          path: raaghu-mfe/rds_pages/rds-page-pages/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - payment-plans
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-payment-plans
+          path: raaghu-mfe/rds_pages/rds-page-payment-plans/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - payment-requests
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-payment-requests
+          path: raaghu-mfe/rds_pages/rds-page-payment-requests/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - personal-data
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-personal-data
+          path: raaghu-mfe/rds_pages/rds-page-personal-data/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - polls
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-polls
+          path: raaghu-mfe/rds_pages/rds-page-polls/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - register
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-register
+          path: raaghu-mfe/rds_pages/rds-page-register/dist
+          if-no-files-found: error
+          
+      - name: Upload Artifact - roles
+        uses: actions/upload-artifact@v4
+        with:
+          name: rds-page-roles
+          path: raaghu-mfe/rds_pages/rds-page-roles/dist
+          if-no-files-found: error
+          
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    needs:
+      - build_pages_1
+      - build_pages_2
+      - build_pages_3
+      - build_pages_4
+      - build_pages_5
+
+    steps:
+
+      - name: Download Artifact host
+        uses: actions/download-artifact@v4
+        with:
+          name: host
+          path: dist
+
+      - name: Download Artifact api-scope
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-api-scope
+          path: dist/rds-page-api-scope
+
+      - name: Download Artifact applications
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-applications
+          path: dist/rds-page-applications
+          
+      - name: Download Artifact audit-logs
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-audit-logs
+          path: dist/rds-page-audit-logs
+          
+      - name: Download Artifact authority-delegation
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-authority-delegation
+          path: dist/rds-page-authority-delegation
+          
+      - name: Download Artifact blogger
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-blogger
+          path: dist/rds-page-blogger
+          
+      - name: Download Artifact blog-post
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-blog-post
+          path: dist/rds-page-blog-post
+          
+      - name: Download Artifact tenant
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-tenant
+          path: dist/rds-page-tenant
+          
+      - name: Download Artifact text-template
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-text-template
+          path: dist/rds-page-text-template
+          
+      - name: Download Artifact url-forwarding
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-url-forwarding
+          path: dist/rds-page-url-forwarding
+          
+      - name: Download Artifact users
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-users
+          path: dist/rds-page-users
+          
+      - name: Download Artifact blogs
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-blogs
+          path: dist/rds-page-blogs
+          
+      - name: Download Artifact change-password
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-change-password
+          path: dist/rds-page-change-password
+          
+      - name: Download Artifact chart
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-chart
+          path: dist/rds-page-chart
+          
+      - name: Download Artifact chats
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-chats
+          path: dist/rds-page-chats
+          
+      - name: Download Artifact claim-types
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-claim-types
+          path: dist/rds-page-claim-types
+          
+      - name: Download Artifact client
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-client
+          path: dist/rds-page-client
+          
+      - name: Download Artifact comments
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-comments
+          path: dist/rds-page-comments
+          
+      - name: Download Artifact security-logs
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-security-logs
+          path: dist/rds-page-security-logs
+          
+      - name: Download Artifact settings
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-settings
+          path: dist/rds-page-settings
+          
+      - name: Download Artifact tags
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-tags
+          path: dist/rds-page-tags
+          
+      - name: Download Artifact components
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-components
+          path: dist/rds-page-components
+          
+      - name: Download Artifact dashboard
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-dashboard
+          path: dist/rds-page-dashboard
+          
+      - name: Download Artifact edition
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-edition
+          path: dist/rds-page-edition
+          
+      - name: Download Artifact elements
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-elements
+          path: dist/rds-page-elements
+          
+      - name: Download Artifact file-management
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-file-management
+          path: dist/rds-page-file-management
+          
+      - name: Download Artifact forgot-password
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-forgot-password
+          path: dist/rds-page-forgot-password
+          
+      - name: Download Artifact forms
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-forms
+          path: dist/rds-page-forms
+          
+      - name: Download Artifact forms-preview
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-forms-preview
+          path: dist/rds-page-forms-preview
+          
+      - name: Download Artifact forms-view
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-forms-view
+          path: dist/rds-page-forms-view
+          
+      - name: Download Artifact forms-response
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-forms-response
+          path: dist/rds-page-forms-response
+          
+      - name: Download Artifact global-resources
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-global-resources
+          path: dist/rds-page-global-resources
+          
+      - name: Download Artifact home
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-home
+          path: dist/rds-page-home
+          
+      - name: Download Artifact icon-list
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-icon-list
+          path: dist/rds-page-icon-list
+          
+      - name: Download Artifact language
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-language
+          path: dist/rds-page-language
+          
+      - name: Download Artifact language-text
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-language-text
+          path: dist/rds-page-language-text
+          
+      - name: Download Artifact linked-accounts
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-linked-accounts
+          path: dist/rds-page-linked-accounts
+          
+      - name: Download Artifact login
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-login
+          path: dist/rds-page-login
+          
+      - name: Download Artifact maintainance
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-maintainance
+          path: dist/rds-page-maintainance
+          
+      #- name: Download Artifact under-maintainance
+      #  uses: actions/download-artifact@v4
+      #  with:
+      #    name: rds-page-under-maintainance
+      #    path: dist/rds-page-under-maintainance
+          
+      - name: Download Artifact menus
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-menus
+          path: dist/rds-page-menus
+          
+      - name: Download Artifact my-account
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-my-account
+          path: dist/rds-page-my-account
+          
+      - name: Download Artifact news-letters
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-news-letters
+          path: dist/rds-page-news-letters
+          
+      - name: Download Artifact organization-units
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-organization-units
+          path: dist/rds-page-organization-units
+          
+      - name: Download Artifact page-not-found
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-page-not-found
+          path: dist/rds-page-page-not-found
+          
+      - name: Download Artifact pages
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-pages
+          path: dist/rds-page-pages
+          
+      - name: Download Artifact payment-plans
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-payment-plans
+          path: dist/rds-page-payment-plans
+          
+      - name: Download Artifact payment-requests
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-payment-requests
+          path: dist/rds-page-payment-requests
+          
+      - name: Download Artifact personal-data
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-personal-data
+          path: dist/rds-page-personal-data
+          
+      - name: Download Artifact polls
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-polls
+          path: dist/rds-page-polls
+          
+      - name: Download Artifact register
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-register
+          path: dist/rds-page-register
+          
+      - name: Download Artifact roles
+        uses: actions/download-artifact@v4
+        with:
+          name: rds-page-roles
+          path: dist/rds-page-roles
+          
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'abpstagereact12'
+          slot-name: 'Production'
+          package: dist
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C893C50B68D949C6BA6E74A6EFAB5106 }}

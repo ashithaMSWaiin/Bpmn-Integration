@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RdsToggle renders the component 1`] = `
+<label
+  class="toggle-switch pt-1 switch btn-color-mode-switch border-0"
+>
+  <input
+    id="flexSwitchCheckDefault"
+    type="checkbox"
+  />
+  <span
+    class="toggle-switch-slider d-flex align-items-center justify-content-around btn-color-mode-switch-inner border-0"
+    id="toggleId"
+  >
+    <span
+      class="position-relative z-3 toggle-dark"
+    >
+      <span
+        class="control-prev-icon"
+      >
+        <span
+          class="cursor-pointer undefined"
+          role="img"
+        />
+      </span>
+    </span>
+    <span
+      class="position-relative z-3"
+    >
+      <span
+        class="control-next-icon"
+      >
+        <span
+          class="cursor-pointer undefined"
+          role="img"
+        >
+          <svg
+            id="a"
+            style="height: 20px; width: 20px; fill: none; stroke: currentColor;"
+            viewBox="0 0 21 21"
+          >
+            <path
+              class="icon"
+              d="M.5,13.344l4.2,6.44c.287,.445,.729,.709,1.2,.716,.463,.006,.904-.236,1.2-.661L20.5,.5"
+            />
+          </svg>
+        </span>
+      </span>
+    </span>
+  </span>
+</label>
+`;

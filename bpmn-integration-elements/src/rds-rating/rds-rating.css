@@ -1,0 +1,26 @@
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.on {
+  color: #e3a300;
+  border: #e3a300;
+}
+.off {
+  color: #c9c9c9;
+  border-color: #e3a300;
+}
+
+.on svg .star {
+  fill: #e3a300;
+  stroke: #e3a300;
+  stroke-width: 1;
+}
+
+.hover svg .star {
+  fill: #e3a300;
+  stroke: #e3a300;
+  stroke-width: 1;
+}

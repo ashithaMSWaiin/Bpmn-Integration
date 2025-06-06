@@ -1,0 +1,5 @@
+{
+  "packages": ["raaghu-mfe/rds_pages/*"],
+  "npmClient": "npm",
+  "version": "1.0.0"
+}

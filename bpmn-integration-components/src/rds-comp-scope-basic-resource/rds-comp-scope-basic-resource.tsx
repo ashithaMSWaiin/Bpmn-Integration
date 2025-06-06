@@ -1,0 +1,155 @@
+import React, { useEffect, useState } from "react";
+import {
+    RdsInput,
+    RdsButton,
+    RdsCheckbox
+} from "../rds-elements";
+import { useTranslation } from "react-i18next";
+
+export interface RdsCompScopeBasicResourceProps {
+    apiScopeData?: any;
+    onSaveHandler?: (data: any) => void;
+    reset?: boolean;
+}
+
+const RdsCompScopeBasicResource = (props: RdsCompScopeBasicResourceProps) => {
+    const [formData, setFormData] = useState(props.apiScopeData);
+    const [inputReset, setInputReset] = useState(false);
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        setFormData(props.apiScopeData);
+    }, [props.apiScopeData]);
+
+    useEffect(() => {
+        setInputReset(!inputReset);
+    }, [props.reset]);
+
+    const apiScopeDataChange = (value: any, key: string) => {
+        setFormData({ ...formData, [key]: value });
+    };
+
+    function emitSaveData(event: any) {
+        event.preventDefault();
+        props.onSaveHandler && props.onSaveHandler(formData);
+        setInputReset(!inputReset);
+        setFormData({
+            name: "",
+            description: "",
+            enabled: false,
+            required: false,
+            emphasize: false,
+            showInDiscovery: false,
+        });
+    }
+
+
+    return (
+        <>
+            <div>
+                <form>
+                    <div className="custom-content-scroll">
+                        <div className="row mt-3">
+                            <div className="col-6">
+                                <RdsInput
+                                    required={true}
+                                    label="Name"
+                                    placeholder="Enter name"
+                                    inputType="text"
+                                    onChange={(e) => {
+                                        apiScopeDataChange(e.target.value, "name");
+                                    }}
+                                    value={formData?.name}
+                                    name="name"
+                                    dataTestId="name"
+                                    reset={inputReset}
+                                ></RdsInput>
+                            </div>
+                            <div className="col-6">
+                                <RdsInput
+                                    label="Description"
+                                    placeholder="Enter Description"
+                                    inputType="text"
+                                    required={false}
+                                    name="Description"
+                                    onChange={(e) => {
+                                        apiScopeDataChange(e.target.value, "description");
+                                    }}
+                                    value={formData?.description}
+                                    dataTestId="description"
+                                ></RdsInput>
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <RdsCheckbox
+                                id="0"
+                                label="Enabled"
+                                checked={formData?.enabled}
+                                onChange={(e) => {
+                                    apiScopeDataChange(e.target.checked, "enabled");
+                                }}
+                                dataTestId="enabled"
+                            ></RdsCheckbox>
+                        </div>
+                        <div className="row mb-3">
+                            <RdsCheckbox
+                                id="0"
+                                label="Required"
+                                checked={formData?.required}
+                                onChange={(e: any) => {
+                                    apiScopeDataChange(e.target.checked, "required");
+                                }}
+                                dataTestId="required"
+                            ></RdsCheckbox>
+                        </div>
+                        <div className="row mb-3">
+                            <RdsCheckbox
+                                id="0"
+                                label="Emphasize"
+                                checked={formData?.emphasize}
+                                onChange={(e: any) => {
+                                    apiScopeDataChange(e.target.checked, "emphasize");
+                                }}
+                                dataTestId="emphasize"
+                            ></RdsCheckbox>
+                        </div>
+                        <div className="row mb-3">
+                            <RdsCheckbox
+                                id="0"
+                                label="Show in Discovery Document"
+                                checked={formData?.showInDiscovery}
+                                onChange={(e) => {
+                                    apiScopeDataChange(e.target.checked, "showInDiscovery");
+                                }}
+                                dataTestId="discovery-document"
+                            ></RdsCheckbox>
+                        </div>
+                    </div>
+                    <div className="d-flex flex-column-reverse ps-4 flex-lg-row flex-md-column-reverse flex-row flex-xl-row flex-xxl-row footer-buttons gap-2 mt-3 pb-3">
+                        <RdsButton
+                            class="me-2"
+                            tooltipTitle={""}
+                            type={"button"}
+                            label={t("Cancel") || ""}
+                            colorVariant="outline-primary"
+                            size="small"
+                            databsdismiss="offcanvas"
+                            dataTestId="cancel"
+                        ></RdsButton>
+                        <RdsButton
+                            class="me-2"
+                            label={t("Save") || ""}
+                            size="small"
+                            type="button"
+                            colorVariant="primary"
+                            databsdismiss="offcanvas"
+                            onClick={(e: any) => emitSaveData(e)}
+                            dataTestId="save"
+                        ></RdsButton>
+                    </div>
+                </form>
+            </div>
+        </>
+    );
+};
+export default RdsCompScopeBasicResource;
