@@ -344,7 +344,115 @@ const MainMenu = [
                                 path: "/modeler",
                                 permission: "Bpmn-integration.Modeler",
                                 subTitle: "subtitle here"
+                            },
+{
+                                key: "10",
+                                label: "ColorModeler",
+                                icon: "icons",
+                                path: "/colormodeler",
+                                permission: "Bpmn-integration.ColorModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "11",
+                                label: "CommentModeler",
+                                icon: "icons",
+                                path: "/commentmodeler",
+                                permission: "Bpmn-integration.CommentModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "12",
+                                label: "TransactionBoundaryModeler",
+                                icon: "icons",
+                                path: "/transactionboundarymodeler",
+                                permission: "Bpmn-integration.TransactionBoundaryModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "13",
+                                label: "PropertyPanelModeler",
+                                icon: "icons",
+                                path: "/propertypanelmodeler",
+                                permission: "Bpmn-integration.PropertyPanelModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "14",
+                                label: "PropertyPanelExtensionModeler",
+                                icon: "icons",
+                                path: "/propertypanelextensionmodeler",
+                                permission: "Bpmn-integration.PropertyPanelExtensionModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "15",
+                                label: "OverlayModeler",
+                                icon: "icons",
+                                path: "/overlaymodeler",
+                                permission: "Bpmn-integration.OverlayModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "16",
+                                label: "BpmnModeler",
+                                icon: "icons",
+                                path: "/bpmnmodeler",
+                                permission: "Bpmn-integration.BpmnModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "17",
+                                label: "Minimapmodeler",
+                                icon: "icons",
+                                path: "/minimapmodeler",
+                                permission: "Bpmn-integration.Minimapmodeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "18",
+                                label: "TranslateBpmnModeler",
+                                icon: "icons",
+                                path: "/translatebpmnmodeler",
+                                permission: "Bpmn-integration.TranslateBpmnModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "19",
+                                label: "ExampleBpmnModeler",
+                                icon: "icons",
+                                path: "/examplebpmnmodeler",
+                                permission: "Bpmn-integration.ExampleBpmnModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "20",
+                                label: "DynamicExampleBpmnModeler",
+                                icon: "icons",
+                                path: "/dynamicexamplebpmnmodeler",
+                                permission: "Bpmn-integration.DynamicExampleBpmnModeler",
+                                subTitle: "subtitle here"
+                            },
+{
+                                key: "21",
+                                label: "BpmnExampleModeler",
+                                icon: "icons",
+                                path: "/bpmnexamplemodeler",
+                                permission: "Bpmn-integration.BpmnExampleModeler",
+                                subTitle: "subtitle here"
                             }
+
+
+
+
+
+
+
+
+
+
+
+
 
 ,
 ];

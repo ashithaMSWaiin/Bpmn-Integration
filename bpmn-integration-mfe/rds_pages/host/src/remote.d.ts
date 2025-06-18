@@ -240,3 +240,63 @@ declare module "Modeler/Modeler" {
 	const ModelerComponent: React.ComponentType;
 	export default ModelerComponent;
 }
+
+declare module "ColorModeler/ColorModeler" {
+	const ColorModelerComponent: React.ComponentType;
+	export default ColorModelerComponent;
+}
+
+declare module "CommentModeler/CommentModeler" {
+	const CommentModelerComponent: React.ComponentType;
+	export default CommentModelerComponent;
+}
+
+declare module "TransactionBoundaryModeler/TransactionBoundaryModeler" {
+	const TransactionBoundaryModelerComponent: React.ComponentType;
+	export default TransactionBoundaryModelerComponent;
+}
+
+declare module "PropertyPanelModeler/PropertyPanelModeler" {
+	const PropertyPanelModelerComponent: React.ComponentType;
+	export default PropertyPanelModelerComponent;
+}
+
+declare module "PropertyPanelExtensionModeler/PropertyPanelExtensionModeler" {
+	const PropertyPanelExtensionModelerComponent: React.ComponentType;
+	export default PropertyPanelExtensionModelerComponent;
+}
+
+declare module "OverlayModeler/OverlayModeler" {
+	const OverlayModelerComponent: React.ComponentType;
+	export default OverlayModelerComponent;
+}
+
+declare module "BpmnModeler/BpmnModeler" {
+	const BpmnModelerComponent: React.ComponentType;
+	export default BpmnModelerComponent;
+}
+
+declare module "Minimapmodeler/Minimapmodeler" {
+	const MinimapmodelerComponent: React.ComponentType;
+	export default MinimapmodelerComponent;
+}
+
+declare module "TranslateBpmnModeler/TranslateBpmnModeler" {
+	const TranslateBpmnModelerComponent: React.ComponentType;
+	export default TranslateBpmnModelerComponent;
+}
+
+declare module "ExampleBpmnModeler/ExampleBpmnModeler" {
+	const ExampleBpmnModelerComponent: React.ComponentType;
+	export default ExampleBpmnModelerComponent;
+}
+
+declare module "DynamicExampleBpmnModeler/DynamicExampleBpmnModeler" {
+	const DynamicExampleBpmnModelerComponent: React.ComponentType;
+	export default DynamicExampleBpmnModelerComponent;
+}
+
+declare module "BpmnExampleModeler/BpmnExampleModeler" {
+	const BpmnExampleModelerComponent: React.ComponentType;
+	export default BpmnExampleModelerComponent;
+}

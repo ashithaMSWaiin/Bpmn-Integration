@@ -157,5 +157,41 @@ export const PortConfig = {
   },
   "modeler": {
     "port": "8030"
+  },
+  "colormodeler": {
+    "port": "8031"
+  },
+  "commentmodeler": {
+    "port": "8041"
+  },
+  "transactionboundarymodeler": {
+    "port": "8042"
+  },
+  "propertypanelmodeler": {
+    "port": "8043"
+  },
+  "propertypanelextensionmodeler": {
+    "port": "8044"
+  },
+  "overlaymodeler": {
+    "port": "8045"
+  },
+  "bpmnmodeler": {
+    "port": "8046"
+  },
+  "minimapmodeler": {
+    "port": "8047"
+  },
+  "translatebpmnmodeler": {
+    "port": "8048"
+  },
+  "examplebpmnmodeler": {
+    "port": "8049"
+  },
+  "dynamicexamplebpmnmodeler": {
+    "port": "8051"
+  },
+  "bpmnexamplemodeler": {
+    "port": "8052"
   }
 }

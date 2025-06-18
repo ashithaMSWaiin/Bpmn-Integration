@@ -45,13 +45,24 @@ import {
   NewslettersCompo,
   ChartCompo,
   HomeCompo,
-  PageNotFoundCompo,
   LinkedAccountsCompo,
   AuthorityDelegationCompo,
   ProcessModelerCompo,
   ModelerCompo,
+  ColorModelerCompo,
+  CommentModelerCompo,
+  TransactionBoundaryModelerCompo,
+  PropertyPanelModelerCompo,
+  PropertyPanelExtensionModelerCompo,
+  OverlayModelerCompo,
+  BpmnModelerCompo,
+  MinimapmodelerCompo,
+  TranslateBpmnModelerCompo,
+  ExampleBpmnModelerCompo,
+  DynamicExampleBpmnModelerCompo,
+  BpmnExampleModelerCompo,
 } from "./PageComponent";
-import PrivateRoute_Auth from "./PrivateRoute_Auth";
+
 
 
 
@@ -69,7 +80,18 @@ const MainRoutes = (props: MainRoutes) => {
           {props.isImpersonation && (
             <Route path="/dashboard" element={<DashboardCompo />}></Route>
           )}
-        <Route path="" element={<PrivateRoute_Auth />}>
+          <Route path="/bpmnexamplemodeler" element={<BpmnExampleModelerCompo />} />
+          <Route path="/dynamicexamplebpmnmodeler" element={<DynamicExampleBpmnModelerCompo />} />
+<Route path="/examplebpmnmodeler" element={<ExampleBpmnModelerCompo />} />
+<Route path="/translatebpmnmodeler" element={<TranslateBpmnModelerCompo />} />
+<Route path="/minimapmodeler" element={<MinimapmodelerCompo />} />
+<Route path="/bpmnmodeler" element={<BpmnModelerCompo />} />
+<Route path="/overlaymodeler" element={<OverlayModelerCompo />} />
+<Route path="/propertypanelextensionmodeler" element={<PropertyPanelExtensionModelerCompo />} />
+<Route path="/propertypanelmodeler" element={<PropertyPanelModelerCompo />} />
+<Route path="/transactionboundarymodeler" element={<TransactionBoundaryModelerCompo />} />
+<Route path="/commentmodeler" element={<CommentModelerCompo />} />
+<Route path="/colormodeler" element={<ColorModelerCompo />} />
 <Route path="/modeler" element={<ModelerCompo />} />
 <Route path="/processmodeler" element={<ProcessModelerCompo />} />
             <Route path="/authority-delegation" element={<AuthorityDelegationCompo />} />
@@ -144,12 +166,12 @@ const MainRoutes = (props: MainRoutes) => {
             <Route path="/my-account" element={<MyAccountCompo />} />
             <Route path="/components/:type" element={<ComponentsCompo />} />
             <Route path="/charts/:type" element={<ChartCompo />} />
-          </Route>
-          <Route path="*" element={<PageNotFoundCompo />} />
         </Routes>
       </Suspense>
     </>
   );
 };
+
+
 
 export default MainRoutes;

@@ -157,5 +157,41 @@ export const MfeConfig = {
   },
   "modeler": {
     "url": "modeler@http://localhost:8030/remoteEntry.js"
+  },
+  "colormodeler": {
+    "url": "colormodeler@http://localhost:8031/remoteEntry.js"
+  },
+  "commentmodeler": {
+    "url": "commentmodeler@http://localhost:8041/remoteEntry.js"
+  },
+  "transactionboundarymodeler": {
+    "url": "transactionboundarymodeler@http://localhost:8042/remoteEntry.js"
+  },
+  "propertypanelmodeler": {
+    "url": "propertypanelmodeler@http://localhost:8043/remoteEntry.js"
+  },
+  "propertypanelextensionmodeler": {
+    "url": "propertypanelextensionmodeler@http://localhost:8044/remoteEntry.js"
+  },
+  "overlaymodeler": {
+    "url": "overlaymodeler@http://localhost:8045/remoteEntry.js"
+  },
+  "bpmnmodeler": {
+    "url": "bpmnmodeler@http://localhost:8046/remoteEntry.js"
+  },
+  "minimapmodeler": {
+    "url": "minimapmodeler@http://localhost:8047/remoteEntry.js"
+  },
+  "translatebpmnmodeler": {
+    "url": "translatebpmnmodeler@http://localhost:8048/remoteEntry.js"
+  },
+  "examplebpmnmodeler": {
+    "url": "examplebpmnmodeler@http://localhost:8049/remoteEntry.js"
+  },
+  "dynamicexamplebpmnmodeler": {
+    "url": "dynamicexamplebpmnmodeler@http://localhost:8051/remoteEntry.js"
+  },
+  "bpmnexamplemodeler": {
+    "url": "bpmnexamplemodeler@http://localhost:8052/remoteEntry.js"
   }
 }

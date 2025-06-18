@@ -90,6 +90,30 @@ debugger;
  pagekey = "Bpmn-integration.ProcessModeler";
  } else if (location.pathname == "/modeler") {
  pagekey = "Bpmn-integration.Modeler";
+ } else if (location.pathname == "/colormodeler") {
+ pagekey = "Bpmn-integration.ColorModeler";
+ } else if (location.pathname == "/commentmodeler") {
+ pagekey = "Bpmn-integration.CommentModeler";
+ } else if (location.pathname == "/transactionboundarymodeler") {
+ pagekey = "Bpmn-integration.TransactionBoundaryModeler";
+ } else if (location.pathname == "/propertypanelmodeler") {
+ pagekey = "Bpmn-integration.PropertyPanelModeler";
+ } else if (location.pathname == "/propertypanelextensionmodeler") {
+ pagekey = "Bpmn-integration.PropertyPanelExtensionModeler";
+ } else if (location.pathname == "/overlaymodeler") {
+ pagekey = "Bpmn-integration.OverlayModeler";
+ } else if (location.pathname == "/bpmnmodeler") {
+ pagekey = "Bpmn-integration.BpmnModeler";
+ } else if (location.pathname == "/minimapmodeler") {
+ pagekey = "Bpmn-integration.Minimapmodeler";
+ } else if (location.pathname == "/translatebpmnmodeler") {
+ pagekey = "Bpmn-integration.TranslateBpmnModeler";
+ } else if (location.pathname == "/examplebpmnmodeler") {
+ pagekey = "Bpmn-integration.ExampleBpmnModeler";
+ } else if (location.pathname == "/dynamicexamplebpmnmodeler") {
+ pagekey = "Bpmn-integration.DynamicExampleBpmnModeler";
+ } else if (location.pathname == "/bpmnexamplemodeler") {
+ pagekey = "Bpmn-integration.BpmnExampleModeler";
  } else {
  pagekey = "extraCASE"; 
  setPermission(false); 
@@ -108,8 +132,10 @@ debugger;
 
     callConfigurationService();
   }, [currLanguage, location.pathname]);
-debugger;
-  return permission ? <Outlet /> : location.pathname == '/processmodeler'?<Outlet />:<Navigate to="/pagenotfound" replace />;
+
+  return <Outlet /> ;
+
+  // return permission ? <Outlet /> : location.pathname == '/processmodeler'?<Outlet />:<Navigate to="/pagenotfound" replace />;
 };
 export default PrivateRoute_Auth;
 

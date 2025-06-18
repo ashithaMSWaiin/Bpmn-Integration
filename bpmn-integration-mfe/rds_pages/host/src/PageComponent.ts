@@ -71,6 +71,18 @@ const LinkedAccountsCompo = React.lazy(() => import("LinkedAccounts/LinkedAccoun
 const AuthorityDelegationCompo = React.lazy(() => import("AuthorityDelegation/AuthorityDelegation"));
 const ProcessModelerCompo = React.lazy(() => import("ProcessModeler/ProcessModeler"));
  const ModelerCompo = React.lazy(() => import("Modeler/Modeler"));
+ const ColorModelerCompo = React.lazy(() => import("ColorModeler/ColorModeler"));
+ const CommentModelerCompo = React.lazy(() => import("CommentModeler/CommentModeler"));
+ const TransactionBoundaryModelerCompo = React.lazy(() => import("TransactionBoundaryModeler/TransactionBoundaryModeler"));
+ const PropertyPanelModelerCompo = React.lazy(() => import("PropertyPanelModeler/PropertyPanelModeler"));
+ const PropertyPanelExtensionModelerCompo = React.lazy(() => import("PropertyPanelExtensionModeler/PropertyPanelExtensionModeler"));
+ const OverlayModelerCompo = React.lazy(() => import("OverlayModeler/OverlayModeler"));
+ const BpmnModelerCompo = React.lazy(() => import("BpmnModeler/BpmnModeler"));
+ const MinimapmodelerCompo = React.lazy(() => import("Minimapmodeler/Minimapmodeler"));
+ const TranslateBpmnModelerCompo = React.lazy(() => import("TranslateBpmnModeler/TranslateBpmnModeler"));
+ const ExampleBpmnModelerCompo = React.lazy(() => import("ExampleBpmnModeler/ExampleBpmnModeler"));
+ const DynamicExampleBpmnModelerCompo = React.lazy(() => import("DynamicExampleBpmnModeler/DynamicExampleBpmnModeler"));
+ const BpmnExampleModelerCompo = React.lazy(() => import("BpmnExampleModeler/BpmnExampleModeler"));
  export {
   DashboardCompo,
   LoginCompo,
@@ -123,4 +135,16 @@ const ProcessModelerCompo = React.lazy(() => import("ProcessModeler/ProcessModel
   AuthorityDelegationCompo,
 
 ProcessModelerCompo,
-ModelerCompo,};
+ModelerCompo,
+ColorModelerCompo,
+CommentModelerCompo,
+TransactionBoundaryModelerCompo,
+PropertyPanelModelerCompo,
+PropertyPanelExtensionModelerCompo,
+OverlayModelerCompo,
+BpmnModelerCompo,
+MinimapmodelerCompo,
+TranslateBpmnModelerCompo,
+ExampleBpmnModelerCompo,
+DynamicExampleBpmnModelerCompo,
+BpmnExampleModelerCompo,};
